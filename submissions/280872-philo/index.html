@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Health Logger</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Screen 1: Home -->
+    <div id="screen-home" class="screen active">
+      <header>
+        <h1>Health Logger</h1>
+      </header>
+      <main>
+        <div class="stats-card">
+          <p class="stats-label">Today's Total Exercise</p>
+          <p class="stats-value" id="today-total">0 min</p>
+        </div>
+        <div class="stats-card secondary">
+          <p class="stats-label">Today's Entries</p>
+          <p class="stats-value" id="today-count">0</p>
+        </div>
+        <h2 class="section-title">Today's Logs</h2>
+        <div id="log-list">
+          <p class="empty-state">No logs yet today. Start your first entry!</p>
+        </div>
+        <button class="btn btn-primary" id="btn-add-log">+ Add New Log</button>
+      </main>
+    </div>
+
+    <!-- Screen 2: Form -->
+    <div id="screen-form" class="screen">
+      <header>
+        <button class="btn-back" id="btn-back-form">← Back</button>
+        <h1>New Health Log</h1>
+      </header>
+      <main>
+        <form id="health-form" novalidate>
+          <div class="form-group">
+            <label for="log-date">Date *</label>
+            <input type="date" id="log-date" required>
+            <span class="error-msg" id="error-date"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="log-type">Exercise Type *</label>
+            <select id="log-type" required>
+              <option value="">-- Select --</option>
+              <option value="Running">Running</option>
+              <option value="Walking">Walking</option>
+              <option value="Cycling">Cycling</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Yoga">Yoga</option>
+              <option value="Weight Training">Weight Training</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg" id="error-type"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="log-duration">Duration (minutes) *</label>
+            <input type="number" id="log-duration" min="1" max="480" placeholder="e.g. 30" required>
+            <span class="error-msg" id="error-duration"></span>
+          </div>
+
+          <div class="form-group">
+            <label>Intensity *</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="intensity" value="Low" required> Low
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="intensity" value="Medium"> Medium
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="intensity" value="High"> High
+              </label>
+            </div>
+            <span class="error-msg" id="error-intensity"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="log-notes">Notes</label>
+            <textarea id="log-notes" rows="3" placeholder="How did it feel? Any notes..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">Save Log</button>
+        </form>
+      </main>
+    </div>
+
+    <!-- Screen 3: Summary -->
+    <div id="screen-summary" class="screen">
+      <header>
+        <button class="btn-back" id="btn-back-summary">← Back</button>
+        <h1>Log Details</h1>
+      </header>
+      <main>
+        <div class="detail-card" id="detail-card">
+          <div class="detail-row">
+            <span class="detail-label">Date</span>
+            <span class="detail-value" id="detail-date"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Exercise</span>
+            <span class="detail-value" id="detail-type"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Duration</span>
+            <span class="detail-value" id="detail-duration"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Intensity</span>
+            <span class="detail-value" id="detail-intensity"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Notes</span>
+            <span class="detail-value" id="detail-notes"></span>
+          </div>
+        </div>
+        <button class="btn btn-secondary" id="btn-home">Back to Home</button>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
