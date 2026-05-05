@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button onclick="toggleDarkMode()" class="secondary">
+  🌙 Toggle Mode
+</button>
+  <div class="container">
+
+  <button onclick="toggleDarkMode()" class="secondary">
+    🌙 Theme
+  </button>
+
+  <h2>💰 Expense Tracker</h2>
+  <p class="empty">Simple Finance Manager</p>
+
+  <canvas id="expenseChart"></canvas>
+
+  <div id="dataDisplay"></div>
+
+</div>
+    <canvas id="expenseChart"></canvas>
+<h3 id="total">Total: 0</h3>
+<select id="filter" onchange="filterExpenses()">
+  <option value="all">All Categories</option>
+  <option value="Food">Food</option>
+  <option value="Transport">Transport</option>
+  <option value="Shopping">Shopping</option>
+  <option value="Other">Other</option>
+</select>
+    <div id="dataDisplay"></div>
+
+    <button onclick="goHome()">Back</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<button onclick="exportPDF()">Export as PDF</button>
+
