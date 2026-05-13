@@ -1,123 +1,53 @@
-# Homework Two: Mobile Application
+# HabitFlow – Daily Habit Tracker
 
-Build a small mobile application that demonstrates a complete user flow across different screens. You may build either a native Android application or a mobile web application, but the final result must be usable on a phone-sized screen.
+## App Idea
 
-## Learning Goals
+HabitFlow is a mobile-friendly habit tracking application that lets users create daily habits, set goals, and track their progress with streaks. Users can add a habit with a custom icon, colour, and schedule, then mark it as done each day to build a streak. Tapping a habit opens a detail screen showing all stored information from the form.
 
-- Design an application with more than one screen.
-- Implement navigation between screens.
-- Build at least one form that accepts user input.
-- Validate input and show useful feedback.
-- Store or pass form data so another screen can display or use it.
-- Keep the project organized so it can be reviewed by humans and AI tools.
+## Technology Used
 
-## Application Theme
+- Plain HTML, CSS, and JavaScript (no frameworks, no build tools)
+- `localStorage` for persisting habits across page refreshes
+- Responsive CSS custom properties and flexbox/grid layout
 
-The topic is open. Choose a small realistic application idea, for example:
+## How to Run
 
-- personal habit tracker
-- course registration helper
-- expense recorder
-- event sign-up app
-- food ordering prototype
-- campus service request app
-- simple travel planner
-- health or exercise logger
+Open `index.html` in any modern web browser. No installation or build step is required.
 
-Do not copy a full existing commercial application. Keep the scope small enough to finish well.
+```
+open index.html
+```
 
-## Technical Options
+For a phone-like view in desktop Chrome/Firefox, open DevTools → toggle device toolbar → select a phone preset (e.g. iPhone 14).
 
-You may choose one of these options:
+## Screens
 
-1. **Native Android**
-   - Kotlin or Java is allowed.
-   - Android Studio project structure is recommended.
-   - Jetpack Compose or XML layouts are both acceptable.
+| Screen | Description |
+|---|---|
+| **Home** | Shows total habits, habits done today, best streak, and a card list of all habits with quick-check buttons |
+| **New Habit (Form)** | Form to create a new habit |
+| **Habit Detail** | Full detail view of a selected habit showing all form data, mark-done toggle, and delete button |
 
-2. **Mobile Web**
-   - HTML, CSS, and JavaScript are allowed.
-   - A framework such as React, Vue, Svelte, or plain JavaScript is acceptable.
-   - The app must be responsive and comfortable on a mobile screen.
+## Form Fields and Validation Rules
 
-## Minimum Functional Requirements
+| Field | Type | Validation |
+|---|---|---|
+| Habit Name | Text | Required; minimum 3 characters |
+| Category | Select / Dropdown | Required; must choose one of 7 categories |
+| Daily Goal (minutes) | Number | Required; must be between 1 and 1440 |
+| Start Date | Date | Required; must not be in the past |
+| Frequency | Segmented button tabs | Optional; defaults to Daily |
+| Reminder | Checkbox / Toggle | Optional |
+| Icon | Button grid (emoji) | Optional; defaults to 🏃 |
+| Color | Color picker buttons | Optional; defaults to purple |
+| Notes | Textarea | Optional; no validation |
 
-Your application must include all of the following:
+## How Data Moves Between Screens
 
-1. **At least three screens**
-   - Example: Home, Form/Create, Detail/Summary.
-   - Screens may be Android activities/fragments/Compose screens or mobile web routes/views.
+When the form is submitted, a habit object is pushed into an in-memory array and also saved to `localStorage`. The Home screen reads from this array to render habit cards. When a card is tapped, the habit's `id` is used to look up the full object and populate the Detail screen with every field that was entered in the form (name, category, goal, date, frequency, reminder, streak, notes). No routing library is used; screens are toggled with `display: flex / none` and a shared `goTo()` helper.
 
-2. **Navigation**
-   - Users must be able to move between screens using visible UI controls.
-   - Back navigation should work naturally where possible.
+## Known Issues / Unfinished Work
 
-3. **A form**
-   - Include at least four input fields.
-   - Use at least two different input types, such as text, number, date, select/dropdown, checkbox, radio, switch, or textarea.
-
-4. **Validation**
-   - Required fields must be checked.
-   - At least one field must have a specific rule, such as minimum length, numeric range, date rule, email format, or phone format.
-   - Validation messages must be visible to the user.
-
-5. **Data flow**
-   - Data entered in the form must appear on another screen.
-   - You may use state, route parameters, local storage, a local database, or another reasonable local method.
-
-6. **Mobile interface**
-   - The app must be readable and usable on a phone-sized screen.
-   - Buttons, form controls, and navigation elements should be easy to tap.
-
-7. **README documentation**
-   - Your submission folder must include a short README explaining the app idea, technology used, how to run it, and which requirements are completed.
-
-## AI Use Policy
-
-AI tools are allowed. You may use AI to brainstorm, generate code, debug, improve UI, or write documentation. You are still responsible for understanding and explaining your own submission.
-
-Each submission must include an `AI_USAGE.md` file with:
-
-- which AI tool or model you used
-- what you asked it to help with
-- which parts of the final project were AI-assisted
-- what you changed or verified yourself
-
-Submissions without honest AI disclosure may lose marks.
-
-## Submission Method
-
-Submit your work by pull request in this repository.
-
-1. Create a branch named:
-
-   ```text
-   submit/<student-id>
-   ```
-
-2. Add your project under:
-
-   ```text
-   submissions/<student-id>-<english-name>/
-   ```
-
-3. Include all required files described in [SUBMISSION_STANDARD.md](SUBMISSION_STANDARD.md).
-
-4. Open a pull request to the `main` branch.
-
-5. The pull request title must use this format:
-
-   ```text
-   <student-id> <english-name> Homework Two
-   ```
-
-## Deadline
-
-The deadline will be announced by the teacher in class.
-
-Late submissions may lose marks unless permission is given before the deadline.
-
-## Grading
-
-See [REVIEW_RUBRIC.md](REVIEW_RUBRIC.md) for the grading standard.
-
+- Reminder toggle is UI-only; actual push notifications are not implemented (browser Notification API would require HTTPS and user permission).
+- The streak counter increments each time a habit is marked done but does not reset overnight automatically; a real implementation would compare the last-done date with today's date.
+- No edit screen — users must delete and re-create a habit to change it.
