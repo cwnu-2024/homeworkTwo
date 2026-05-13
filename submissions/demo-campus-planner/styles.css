@@ -1,0 +1,217 @@
+:root {
+  --ink: #1e293b;
+  --muted: #64748b;
+  --line: #d9e2ec;
+  --page: #eef6f3;
+  --panel: #ffffff;
+  --accent: #0f766e;
+  --accent-dark: #115e59;
+  --sun: #f59e0b;
+  --danger: #be123c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    linear-gradient(160deg, rgba(15, 118, 110, 0.14), transparent 38%),
+    linear-gradient(20deg, rgba(245, 158, 11, 0.18), transparent 42%),
+    var(--page);
+}
+
+.app-shell {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 6px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.nav-button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted);
+  background: transparent;
+}
+
+.nav-button.active {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.lead {
+  margin: 14px 0 22px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.status-panel,
+.summary-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.status-panel {
+  grid-template-columns: 1fr 1fr;
+}
+
+.status-panel > div,
+.summary-item,
+.empty-state {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.primary-action,
+.secondary-action {
+  width: 100%;
+  min-height: 50px;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.primary-action {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+.secondary-action {
+  color: var(--accent-dark);
+  border: 1px solid var(--accent);
+  background: #ffffff;
+}
+
+form {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--panel);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.check-row input {
+  width: 20px;
+  min-height: 20px;
+}
+
+.error {
+  min-height: 18px;
+  color: var(--danger);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.summary-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.summary-item span,
+.empty-state {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (min-width: 720px) {
+  body {
+    display: grid;
+    place-items: center;
+    padding: 28px;
+  }
+
+  .app-shell {
+    min-height: 760px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.16);
+  }
+}

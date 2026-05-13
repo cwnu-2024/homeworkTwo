@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Plan</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <nav class="topbar" aria-label="Main navigation">
+        <button class="nav-button active" type="button" data-view="home">Home</button>
+        <button class="nav-button" type="button" data-view="form">Plan</button>
+        <button class="nav-button" type="button" data-view="summary">Summary</button>
+      </nav>
+
+      <section class="screen active" id="home" aria-labelledby="home-title">
+        <p class="eyebrow">Student day planner</p>
+        <h1 id="home-title">Campus Plan</h1>
+        <p class="lead">
+          Build a simple class-day plan, save the important details, and review it before you leave.
+        </p>
+
+        <div class="status-panel">
+          <div>
+            <span class="label">Next task</span>
+            <strong id="home-course">No plan yet</strong>
+          </div>
+          <div>
+            <span class="label">Budget</span>
+            <strong id="home-budget">$0</strong>
+          </div>
+        </div>
+
+        <button class="primary-action" type="button" data-view="form">Create plan</button>
+      </section>
+
+      <section class="screen" id="form" aria-labelledby="form-title">
+        <p class="eyebrow">Plan details</p>
+        <h2 id="form-title">Create today&apos;s plan</h2>
+
+        <form id="plan-form" novalidate>
+          <label>
+            Course or activity
+            <input id="activity" name="activity" type="text" placeholder="Web Design Lab" />
+            <span class="error" id="activity-error"></span>
+          </label>
+
+          <label>
+            Date
+            <input id="date" name="date" type="date" />
+            <span class="error" id="date-error"></span>
+          </label>
+
+          <label>
+            Time block
+            <select id="time" name="time">
+              <option value="">Choose a time</option>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+            <span class="error" id="time-error"></span>
+          </label>
+
+          <label>
+            Food budget
+            <input id="budget" name="budget" type="number" min="0" max="50" placeholder="12" />
+            <span class="error" id="budget-error"></span>
+          </label>
+
+          <label>
+            Notes
+            <textarea id="notes" name="notes" rows="3" placeholder="Bring laptop and charger"></textarea>
+          </label>
+
+          <label class="check-row">
+            <input id="reminder" name="reminder" type="checkbox" />
+            Send myself a reminder
+          </label>
+
+          <button class="primary-action" type="submit">Save plan</button>
+        </form>
+      </section>
+
+      <section class="screen" id="summary" aria-labelledby="summary-title">
+        <p class="eyebrow">Saved summary</p>
+        <h2 id="summary-title">Your campus day</h2>
+
+        <div class="summary-list" id="summary-content">
+          <p class="empty-state">No plan saved yet. Create one from the Plan page.</p>
+        </div>
+
+        <button class="secondary-action" type="button" data-view="form">Edit plan</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
