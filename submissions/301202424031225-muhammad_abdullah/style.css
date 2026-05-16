@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Victor Mono', monospace;
+  background: #3f3939; /* MAIN GREY BACKGROUND */
+  color: #443838;
+}
+
+/* MAIN CONTAINER */
+.container {
+  font-family: 'Handwriting', monospace;
+  max-width: 420px;
+  margin: 20px auto;
+  background: #c2a4a4;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* HEADINGS */
+h1, h2 {
+  text-align: center;
+  font-weight: 600;
+  color: #e4e3e3;
+  margin-bottom: 10px;
+}
+
+/* INPUTS */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: 1px solid #a89d9d;
+  background: #9c9494;
+  font-family: inherit;
+}
+
+textarea {
+  height: 70px;
+}
+
+/* BUTTONS */
+button {
+  width: 100%;
+  padding: 11px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+/* PRIMARY BUTTON (BOTTLE GREEN) */
+button {
+  background: #0f5132;
+  color: #8e996a;
+}
+
+button:hover {
+  background: #146c43;
+  transform: scale(1.02);
+}
+
+/* SECONDARY BUTTON */
+button.secondary {
+  background: #6c6969;
+}
+
+/* ERROR TEXT */
+.error {
+  color: #5e2933;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* CARDS */
+.card {
+  background: #4f6860;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border-left: 5px solid #663141;
+  box-shadow: 0 2px 6px rgba(194, 176, 176, 0.08);
+}
+
+/* TEXT STYLE INSIDE CARDS */
+.card p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #d7cbcb;
+}
+
+/* EMPTY STATE */
+.empty {
+  text-align: center;
+  color: #de19de;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+
+select, input, textarea {
+  outline: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* DARK MODE */
+body.dark {
+  background: #423b3b;
+  color: #eaeaea;
+}
+
+body.dark .container {
+  background: #3f3b3b;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 10px;
+  border: 1px solid #b5b5b5;
+  background: #ffffff;   /* clean white background */
+  color: #1f1f1f;        /* DARK TEXT for readability */
+  font-size: 15px;
+  font-family: inherit;
+}
+
+body.dark .card {
+  background: #333;
+  color: #eee;
+}
+
+body.dark button {
+  background: #5f4052;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #121745;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: -5px;
+}
+
+.home-buttons {
+  margin-top: 15px;
+}

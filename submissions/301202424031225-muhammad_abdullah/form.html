@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Expense</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button onclick="toggleDarkMode()" class="secondary">
+  🌙 Toggle Mode
+</button>
+  <div class="container">
+
+  <button onclick="toggleDarkMode()" class="secondary">
+    🌙 Theme
+  </button>
+
+  <h2>💰 Expense Tracker</h2>
+  <p class="empty">Simple Finance Manager</p>
+
+  <form id="expenseForm">
+    ...
+  </form>
+
+</div>
+
+    <form id="expenseForm">
+
+      <input type="text" id="title" placeholder="Expense Title">
+      <input type="number" id="amount" placeholder="Amount">
+      <input type="date" id="date">
+
+      <select id="category">
+        <option value="">Select Category</option>
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Shopping</option>
+        <option>Other</option>
+      </select>
+
+      <textarea id="notes" placeholder="Notes (optional)"></textarea>
+
+      <p id="error" class="error"></p>
+
+      <button type="submit">
+        <i class="fa fa-save"></i> Save Expense
+      </button>
+
+      <button type="button" onclick="goHome()">Back</button>
+
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
