@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <button onclick="toggleDarkMode()" class="secondary">🌙 Theme</button>
+
+    <h1>💰 Expense Tracker</h1>
+
+    <p class="subtitle">Simple Finance Manager</p>
+
+    <p class="empty">
+      Track your daily expenses, manage spending, and stay in control of your money.
+    </p>
+
+    <div class="home-buttons">
+      <button onclick="goToForm()">➕ Add Expense</button>
+      <button class="secondary" onclick="goToSummary()">📊 View Summary</button>
+    </div>
+
+  </div>
+
+  <script>
+    function goToForm() {
+      window.location.href = "form.html";
+    }
+
+    function goToSummary() {
+      window.location.href = "summary.html";
+    }
+  </script>
+
+</body>
+</html>
