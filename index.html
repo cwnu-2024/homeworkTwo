@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Personal finance</p>
+          <h1>Expense Tracker</h1>
+        </div>
+        <button class="ghost-button danger" id="clearAllButton" type="button">Clear All</button>
+      </header>
+
+      <main>
+        <section class="screen active" id="homeScreen" aria-labelledby="homeTitle">
+          <div class="section-heading">
+            <h2 id="homeTitle">Dashboard</h2>
+            <p id="currentMonthLabel"></p>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card">
+              <span>Today</span>
+              <strong id="dailyNet">$0.00</strong>
+              <small id="dailyBreakdown">Income $0.00 - Expense $0.00</small>
+            </article>
+            <article class="summary-card">
+              <span>This week</span>
+              <strong id="weeklyNet">$0.00</strong>
+              <small id="weeklyBreakdown">Income $0.00 - Expense $0.00</small>
+            </article>
+            <article class="summary-card">
+              <span>This month</span>
+              <strong id="monthlyNet">$0.00</strong>
+              <small id="monthlyBreakdown">Income $0.00 - Expense $0.00</small>
+            </article>
+          </div>
+
+          <div class="panel">
+            <div class="section-heading compact">
+              <h3>Recent activity</h3>
+              <span id="transactionCount">0 items</span>
+            </div>
+            <div class="transaction-list" id="transactionList"></div>
+          </div>
+        </section>
+
+        <section class="screen" id="addScreen" aria-labelledby="addTitle">
+          <div class="section-heading">
+            <h2 id="addTitle">Add Transaction</h2>
+            <p>Record income or expenses as they happen.</p>
+          </div>
+
+          <form class="panel form-panel" id="transactionForm" novalidate>
+            <div class="segmented-control" role="radiogroup" aria-label="Transaction type">
+              <label>
+                <input type="radio" name="type" value="expense" checked />
+                <span>Expense</span>
+              </label>
+              <label>
+                <input type="radio" name="type" value="income" />
+                <span>Income</span>
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Category</span>
+              <select id="categoryInput" required>
+                <option value="">Choose category</option>
+              </select>
+              <small class="error" id="categoryError"></small>
+            </label>
+
+            <label class="field">
+              <span>Amount</span>
+              <input id="amountInput" inputmode="decimal" min="0.01" max="999999" step="0.01" placeholder="0.00" required />
+              <small class="error" id="amountError"></small>
+            </label>
+
+            <label class="field">
+              <span>Date</span>
+              <input id="dateInput" type="date" required />
+              <small class="error" id="dateError"></small>
+            </label>
+
+            <label class="field">
+              <span>Notes / Description</span>
+              <textarea id="notesInput" maxlength="120" placeholder="Groceries, salary, rent..." required></textarea>
+              <small class="error" id="notesError"></small>
+            </label>
+
+            <button class="primary-button" type="submit">Save Transaction</button>
+            <p class="success-message" id="formMessage" role="status"></p>
+          </form>
+        </section>
+
+        <section class="screen" id="budgetScreen" aria-labelledby="budgetTitle">
+          <div class="section-heading">
+            <h2 id="budgetTitle">Budget</h2>
+            <p>Set monthly spending limits and watch category progress.</p>
+          </div>
+
+          <form class="panel budget-form" id="budgetForm" novalidate>
+            <label class="field">
+              <span>Category</span>
+              <select id="budgetCategoryInput" required></select>
+              <small class="error" id="budgetCategoryError"></small>
+            </label>
+            <label class="field">
+              <span>Monthly limit</span>
+              <input id="budgetLimitInput" inputmode="decimal" min="0" max="999999" step="0.01" placeholder="0.00" required />
+              <small class="error" id="budgetLimitError"></small>
+            </label>
+            <button class="primary-button" type="submit">Save Limit</button>
+          </form>
+
+          <div class="budget-list" id="budgetList"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-button active" type="button" data-screen="homeScreen" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">H</span>
+          Home
+        </button>
+        <button class="nav-button" type="button" data-screen="addScreen">
+          <span class="nav-icon" aria-hidden="true">+</span>
+          Add
+        </button>
+        <button class="nav-button" type="button" data-screen="budgetScreen">
+          <span class="nav-icon" aria-hidden="true">$</span>
+          Budget
+        </button>
+      </nav>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
