@@ -1,0 +1,12 @@
+:root { --primary: #2563eb; --bg: #f8fafc; }
+body { font-family: sans-serif; background: var(--bg); margin: 0; padding: 20px; }
+.screen { max-width: 400px; margin: auto; }
+.card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
+.field { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+.btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 16px; cursor: pointer; margin-bottom: 10px; }
+.btn-secondary { width: 100%; background: #e2e8f0; border: none; padding: 15px; border-radius: 8px; font-size: 16px; }
+.error { color: #dc2626; font-size: 12px; display: block; margin-top: 4px; }
+.back-link { background: none; border: none; color: var(--primary); cursor: pointer; padding: 10px 0; font-size: 16px; }
+.history-item { background: white; padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
