@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Summary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="back-link">← Home</a>
+            <h2>History</h2>
+        </header>
+
+        <div id="summaryContainer">
+            <!-- Data will be injected here by JS -->
+        </div>
+
+        <button onclick="clearData()" class="btn danger">Clear All</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Specific logic for summary screen
+        window.onload = displayExpenses;
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="back-link">← Back</a>
+            <h2>New Expense</h2>
+        </header>
+
+        <form id="expenseForm">
+            <div class="form-group">
+                <label>Item Name* (Min 3 chars)</label>
+                <input type="text" id="itemName" placeholder="e.g. Coffee" required>
+                <span class="error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Amount* ($)</label>
+                <input type="number" id="amount" step="0.01" required>
+                <span class="error" id="amountError"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select id="category">
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Bills">Bills</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <button type="submit" class="btn primary">Save Expense</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

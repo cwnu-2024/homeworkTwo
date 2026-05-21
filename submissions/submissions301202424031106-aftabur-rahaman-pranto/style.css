@@ -1,0 +1,55 @@
+:root {
+    --primary: #4a90e2;
+    --bg: #f5f7fa;
+    --text: #333;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    min-height: 100vh;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* Crucial for mobile */
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.primary { background: var(--primary); color: white; }
+.secondary { background: #e2e8f0; color: var(--text); }
+.danger { background: #ff4d4d; color: white; }
+
+.error { color: red; font-size: 0.8rem; }
+.expense-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
