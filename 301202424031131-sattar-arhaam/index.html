@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise Expense Recorder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="phone-shell">
+    <header class="app-header">
+      <div>
+        <p class="app-label">Expense Recorder</p>
+        <h1>SpendWise</h1>
+      </div>
+      <div class="header-total">
+        <span>Total</span>
+        <strong id="headerTotal">$0.00</strong>
+      </div>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="screen active" aria-labelledby="homeTitle">
+        <div class="section-heading">
+          <h2 id="homeTitle">This Month</h2>
+          <p>Track small daily spending before it becomes a surprise.</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-panel">
+            <span class="stat-label">Total spent</span>
+            <strong id="homeTotal">$0.00</strong>
+          </article>
+          <article class="stat-panel accent-panel">
+            <span class="stat-label">Entries</span>
+            <strong id="expenseCount">0</strong>
+          </article>
+        </div>
+
+        <div class="action-row">
+          <button class="primary-button" data-go="add" type="button">+ Add Expense</button>
+          <button class="secondary-button" data-go="summary" type="button">View Summary</button>
+        </div>
+
+        <section class="content-panel">
+          <div class="panel-title-row">
+            <h3>Recent Expenses</h3>
+            <button id="clearAllButton" class="text-button danger" type="button">Clear</button>
+          </div>
+          <div id="recentExpenses" class="expense-list"></div>
+        </section>
+      </section>
+
+      <section id="addScreen" class="screen" aria-labelledby="addTitle">
+        <div class="section-heading">
+          <h2 id="addTitle">Add Expense</h2>
+          <p>Enter the details and save the record.</p>
+        </div>
+
+        <form id="expenseForm" class="content-panel" novalidate>
+          <div class="field-group">
+            <label for="title">Expense title</label>
+            <input id="title" name="title" type="text" placeholder="Lunch with classmates">
+            <p class="error-message" id="titleError"></p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field-group">
+              <label for="amount">Amount ($)</label>
+              <input id="amount" name="amount" type="number" min="0.01" max="10000" step="0.01" placeholder="12.50">
+              <p class="error-message" id="amountError"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="date">Date</label>
+              <input id="date" name="date" type="date">
+              <p class="error-message" id="dateError"></p>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="">Choose a category</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Study">Study</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Other">Other</option>
+            </select>
+            <p class="error-message" id="categoryError"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="note">Note</label>
+            <textarea id="note" name="note" rows="4" maxlength="160" placeholder="Optional short note"></textarea>
+            <p class="helper-text">Maximum 160 characters.</p>
+            <p class="error-message" id="noteError"></p>
+          </div>
+
+          <label class="checkbox-row" for="reimbursable">
+            <input id="reimbursable" name="reimbursable" type="checkbox">
+            <span>Mark as reimbursable</span>
+          </label>
+
+          <div id="formSuccess" class="success-message" aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Save Expense</button>
+            <button class="secondary-button" id="resetFormButton" type="button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="summaryScreen" class="screen" aria-labelledby="summaryTitle">
+        <div class="section-heading">
+          <h2 id="summaryTitle">Expense Summary</h2>
+          <p>Your saved expense details appear here.</p>
+        </div>
+
+        <section id="lastExpensePanel" class="content-panel highlight-panel"></section>
+
+        <section class="content-panel">
+          <div class="panel-title-row">
+            <h3>All Saved Expenses</h3>
+            <span id="summaryCount" class="small-count">0 items</span>
+          </div>
+          <div id="summaryList" class="expense-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-button active" data-go="home" type="button">Home</button>
+      <button class="nav-button" data-go="add" type="button">Add</button>
+      <button class="nav-button" data-go="summary" type="button">Summary</button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
