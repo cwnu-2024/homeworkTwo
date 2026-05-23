@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket Spend</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen active" id="home-screen" aria-labelledby="home-title">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Expense recorder</p>
+          <h1 id="home-title">Pocket Spend</h1>
+        </div>
+        <button class="icon-button" id="clear-data" type="button" aria-label="Clear saved expense">Reset</button>
+      </header>
+
+      <div class="balance-panel">
+        <span>Last expense</span>
+        <strong id="home-amount">$0.00</strong>
+        <p id="home-summary">Add an expense to see the summary here.</p>
+      </div>
+
+      <nav class="action-grid" aria-label="Main navigation">
+        <button class="primary" type="button" data-go="form-screen">Add Expense</button>
+        <button class="secondary" type="button" data-go="summary-screen">View Summary</button>
+      </nav>
+
+      <section class="info-list" aria-label="App sections">
+        <article>
+          <span>1</span>
+          <div>
+            <h2>Enter details</h2>
+            <p>Record title, category, amount, date, payment method, and notes.</p>
+          </div>
+        </article>
+        <article>
+          <span>2</span>
+          <div>
+            <h2>Check validation</h2>
+            <p>The form gives visible feedback before saving.</p>
+          </div>
+        </article>
+        <article>
+          <span>3</span>
+          <div>
+            <h2>Review summary</h2>
+            <p>Saved data appears on a separate screen.</p>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section class="screen" id="form-screen" aria-labelledby="form-title">
+      <header class="topbar compact">
+        <button class="back-button" type="button" data-go="home-screen">Back</button>
+        <h1 id="form-title">New Expense</h1>
+      </header>
+
+      <form id="expense-form" novalidate>
+        <label>
+          Expense title
+          <input id="title" name="title" type="text" placeholder="Lunch with classmates">
+          <small class="error" id="title-error"></small>
+        </label>
+
+        <label>
+          Category
+          <select id="category" name="category">
+            <option value="">Choose category</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Study</option>
+            <option>Health</option>
+            <option>Other</option>
+          </select>
+          <small class="error" id="category-error"></small>
+        </label>
+
+        <label>
+          Amount in USD
+          <input id="amount" name="amount" type="number" min="0.01" max="5000" step="0.01" placeholder="12.50">
+          <small class="error" id="amount-error"></small>
+        </label>
+
+        <label>
+          Expense date
+          <input id="date" name="date" type="date">
+          <small class="error" id="date-error"></small>
+        </label>
+
+        <fieldset>
+          <legend>Payment method</legend>
+          <label class="radio-row">
+            <input type="radio" name="method" value="Cash">
+            Cash
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="method" value="Card">
+            Card
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="method" value="Mobile Pay">
+            Mobile Pay
+          </label>
+          <small class="error" id="method-error"></small>
+        </fieldset>
+
+        <label class="checkbox-row">
+          <input id="reimbursable" name="reimbursable" type="checkbox">
+          Mark as reimbursable
+        </label>
+
+        <label>
+          Notes
+          <textarea id="notes" name="notes" rows="3" placeholder="Optional detail"></textarea>
+        </label>
+
+        <button class="primary wide" type="submit">Save Expense</button>
+      </form>
+    </section>
+
+    <section class="screen" id="summary-screen" aria-labelledby="summary-title">
+      <header class="topbar compact">
+        <button class="back-button" type="button" data-go="home-screen">Back</button>
+        <h1 id="summary-title">Expense Summary</h1>
+      </header>
+
+      <div id="empty-state" class="empty-state">
+        <h2>No expense saved</h2>
+        <p>Add an expense first, then return here to review the saved data.</p>
+        <button class="primary" type="button" data-go="form-screen">Add Expense</button>
+      </div>
+
+      <article id="summary-card" class="summary-card hidden">
+        <div class="summary-head">
+          <span id="summary-category">Category</span>
+          <strong id="summary-amount">$0.00</strong>
+        </div>
+        <h2 id="summary-title-value">Expense title</h2>
+        <dl>
+          <div>
+            <dt>Date</dt>
+            <dd id="summary-date"></dd>
+          </div>
+          <div>
+            <dt>Payment</dt>
+            <dd id="summary-method"></dd>
+          </div>
+          <div>
+            <dt>Reimbursable</dt>
+            <dd id="summary-reimbursable"></dd>
+          </div>
+          <div>
+            <dt>Notes</dt>
+            <dd id="summary-notes"></dd>
+          </div>
+        </dl>
+        <button class="secondary wide" type="button" data-go="form-screen">Edit Expense</button>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
