@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Course Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Mobile Web App</p>
+          <h1>Campus Course Planner</h1>
+        </div>
+        <span class="status-pill" id="savedCount">0 saved</span>
+      </header>
+
+      <nav class="tabs" aria-label="Main navigation">
+        <a href="#home" data-route="home">Home</a>
+        <a href="#register" data-route="register">Register</a>
+        <a href="#saved" data-route="saved">Saved</a>
+      </nav>
+
+      <section id="screen" aria-live="polite"></section>
+    </main>
+
+    <template id="homeTemplate">
+      <section class="screen home-screen">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Plan before you submit</p>
+            <h2>Choose a course and check your registration details in one simple flow.</h2>
+            <p>
+              This mobile app helps a student prepare a small course request with contact details,
+              preferred study mode, credit value, and start date.
+            </p>
+            <a class="primary-action" href="#register">Start registration</a>
+          </div>
+          <div class="course-preview" aria-hidden="true">
+            <div class="preview-bar"></div>
+            <div class="preview-line wide"></div>
+            <div class="preview-line"></div>
+            <div class="preview-meta">
+              <span>3 credits</span>
+              <span>May 20</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <article>
+            <strong>3+ screens</strong>
+            <span>Home, form, summary, and saved requests.</span>
+          </article>
+          <article>
+            <strong>Validation</strong>
+            <span>Required fields, ID, credit, and date rules.</span>
+          </article>
+        </div>
+      </section>
+    </template>
+
+    <template id="registerTemplate">
+      <section class="screen">
+        <div class="section-heading">
+          <p class="eyebrow">Course request</p>
+          <h2>Registration form</h2>
+        </div>
+
+        <form id="courseForm" novalidate>
+          <label>
+            Full name
+            <input type="text" name="fullName" autocomplete="name" placeholder="Adil Rahman Akash" />
+            <span class="error" data-error="fullName"></span>
+          </label>
+
+          <label>
+            Student ID
+            <input type="text" name="studentId" inputmode="numeric" placeholder="301202424031211" />
+            <span class="error" data-error="studentId"></span>
+          </label>
+
+          <label>
+            Course
+            <select name="course">
+              <option value="">Select a course</option>
+              <option>Mobile Application Development</option>
+              <option>Database Systems</option>
+              <option>Java Programming</option>
+              <option>Web Frontend Design</option>
+            </select>
+            <span class="error" data-error="course"></span>
+          </label>
+
+          <label>
+            Credits
+            <input type="number" name="credits" min="1" max="6" placeholder="3" />
+            <span class="error" data-error="credits"></span>
+          </label>
+
+          <label>
+            Preferred start date
+            <input type="date" name="startDate" />
+            <span class="error" data-error="startDate"></span>
+          </label>
+
+          <fieldset>
+            <legend>Study mode</legend>
+            <label class="choice">
+              <input type="radio" name="studyMode" value="In person" checked />
+              In person
+            </label>
+            <label class="choice">
+              <input type="radio" name="studyMode" value="Online" />
+              Online
+            </label>
+          </fieldset>
+
+          <label>
+            Notes
+            <textarea name="notes" rows="4" placeholder="Write any schedule needs or questions."></textarea>
+          </label>
+
+          <label class="choice agreement">
+            <input type="checkbox" name="agreement" />
+            I checked that the information is correct.
+          </label>
+          <span class="error checkbox-error" data-error="agreement"></span>
+
+          <div class="form-actions">
+            <a class="secondary-action" href="#home">Back</a>
+            <button type="submit">Review request</button>
+          </div>
+        </form>
+      </section>
+    </template>
+
+    <template id="summaryTemplate">
+      <section class="screen">
+        <div class="section-heading">
+          <p class="eyebrow">Submitted data</p>
+          <h2>Registration summary</h2>
+        </div>
+        <div id="summaryCard" class="summary-card"></div>
+        <div class="form-actions">
+          <a class="secondary-action" href="#register">Edit form</a>
+          <a class="primary-action compact" href="#saved">View saved</a>
+        </div>
+      </section>
+    </template>
+
+    <template id="savedTemplate">
+      <section class="screen">
+        <div class="section-heading">
+          <p class="eyebrow">Local storage</p>
+          <h2>Saved requests</h2>
+        </div>
+        <div id="savedList" class="saved-list"></div>
+        <div class="form-actions">
+          <a class="secondary-action" href="#home">Home</a>
+          <a class="primary-action compact" href="#register">New request</a>
+        </div>
+      </section>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
