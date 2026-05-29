@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFix Mobile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="phone-shell" aria-live="polite">
+    <section id="home-screen" class="screen active">
+      <div class="top-bar">
+        <div>
+          <p class="eyebrow">Campus service</p>
+          <h1>CampusFix</h1>
+        </div>
+        <span class="status-pill">Mobile</span>
+      </div>
+
+      <div class="hero-panel">
+        <h2>Report a campus problem in one quick flow.</h2>
+        <p>Send maintenance details, track the request summary, and keep the latest report saved on this device.</p>
+      </div>
+
+      <div class="quick-grid" aria-label="Example request categories">
+        <div>
+          <strong>Lights</strong>
+          <span>Dorms and classrooms</span>
+        </div>
+        <div>
+          <strong>Water</strong>
+          <span>Leaks and fountains</span>
+        </div>
+        <div>
+          <strong>Network</strong>
+          <span>Wi-Fi or lab access</span>
+        </div>
+      </div>
+
+      <button class="primary-btn" data-nav="form">Create Request</button>
+      <button class="secondary-btn" data-nav="summary">View Last Summary</button>
+    </section>
+
+    <section id="form-screen" class="screen">
+      <div class="nav-bar">
+        <button class="icon-btn" data-nav="home" aria-label="Back to home">‹</button>
+        <h1>New Request</h1>
+      </div>
+
+      <form id="request-form" novalidate>
+        <label>
+          Your name
+          <input id="student-name" name="studentName" type="text" autocomplete="name" placeholder="Li Ming">
+          <span class="error" id="student-name-error"></span>
+        </label>
+
+        <label>
+          Phone number
+          <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="13812345678">
+          <span class="error" id="phone-error"></span>
+        </label>
+
+        <label>
+          Problem category
+          <select id="category" name="category">
+            <option value="">Choose one</option>
+            <option>Lighting</option>
+            <option>Water</option>
+            <option>Network</option>
+            <option>Furniture</option>
+            <option>Cleaning</option>
+          </select>
+          <span class="error" id="category-error"></span>
+        </label>
+
+        <label>
+          Location
+          <input id="location" name="location" type="text" placeholder="Building 3, Room 204">
+          <span class="error" id="location-error"></span>
+        </label>
+
+        <label>
+          Preferred service date
+          <input id="service-date" name="serviceDate" type="date">
+          <span class="error" id="service-date-error"></span>
+        </label>
+
+        <fieldset>
+          <legend>Urgency</legend>
+          <div class="radio-row">
+            <label><input type="radio" name="urgency" value="Normal" checked> Normal</label>
+            <label><input type="radio" name="urgency" value="Urgent"> Urgent</label>
+          </div>
+        </fieldset>
+
+        <label>
+          Description
+          <textarea id="description" name="description" rows="4" placeholder="Describe what happened"></textarea>
+          <span class="error" id="description-error"></span>
+        </label>
+
+        <label class="check-row">
+          <input id="permission" name="permission" type="checkbox">
+          Staff may contact me for more details.
+        </label>
+        <span class="error" id="permission-error"></span>
+
+        <button class="primary-btn" type="submit">Submit Request</button>
+      </form>
+    </section>
+
+    <section id="summary-screen" class="screen">
+      <div class="nav-bar">
+        <button class="icon-btn" data-nav="home" aria-label="Back to home">‹</button>
+        <h1>Request Summary</h1>
+      </div>
+
+      <div id="empty-summary" class="empty-state">
+        <h2>No request saved</h2>
+        <p>Create a request first, then the submitted details will appear here.</p>
+        <button class="primary-btn" data-nav="form">Create Request</button>
+      </div>
+
+      <article id="summary-card" class="summary-card hidden">
+        <div class="summary-head">
+          <div>
+            <p class="eyebrow">Latest request</p>
+            <h2 id="summary-category"></h2>
+          </div>
+          <span id="summary-urgency" class="status-pill"></span>
+        </div>
+
+        <dl class="summary-list">
+          <div>
+            <dt>Name</dt>
+            <dd id="summary-name"></dd>
+          </div>
+          <div>
+            <dt>Phone</dt>
+            <dd id="summary-phone"></dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd id="summary-location"></dd>
+          </div>
+          <div>
+            <dt>Service date</dt>
+            <dd id="summary-date"></dd>
+          </div>
+          <div class="full-row">
+            <dt>Description</dt>
+            <dd id="summary-description"></dd>
+          </div>
+        </dl>
+
+        <button class="primary-btn" data-nav="form">Edit Request</button>
+        <button class="secondary-btn" id="clear-request" type="button">Clear Saved Request</button>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
