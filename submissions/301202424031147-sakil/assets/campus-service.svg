@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="Campus walkway and service desk">
+  <rect width="960" height="640" fill="#15616d"/>
+  <path d="M0 442h960v198H0z" fill="#e9f2f3"/>
+  <path d="M96 168h344v274H96z" fill="#f6f8fb"/>
+  <path d="M522 112h312v330H522z" fill="#dce8ec"/>
+  <path d="M130 206h74v72h-74zm106 0h74v72h-74zm106 0h74v72h-74zm214-44h72v82h-72zm102 0h72v82h-72zm102 0h72v82h-72z" fill="#79b6bd"/>
+  <path d="M144 334h248v108H144z" fill="#f4a261"/>
+  <path d="M570 306h208v136H570z" fill="#2a9d8f"/>
+  <path d="M0 496c140-42 266-54 378-36 130 20 225 84 366 75 75-5 145-28 216-59v164H0z" fill="#ffffff" opacity=".8"/>
+  <circle cx="728" cy="78" r="42" fill="#f4a261"/>
+  <path d="M405 640c48-104 90-170 130-198 48-34 102-20 159-11 72 12 141-6 206-55v264z" fill="#cde5e8"/>
+</svg>
