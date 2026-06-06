@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Expense Recorder</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <button id="backBtn" class="icon-btn" style="display:none" onclick="goBack()">&#8592;</button>
+      <h1 id="screenTitle">Expense Recorder</h1>
+      <div style="width:40px"></div>
+    </header>
+
+    <main>
+      <!-- Screen 1: Home -->
+      <section id="screen-home" class="screen active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">Total Expenses</span>
+            <span class="stat-value" id="totalExpenses">$0.00</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Entries</span>
+            <span class="stat-value" id="entryCount">0</span>
+          </div>
+        </div>
+        <div class="home-actions">
+          <button class="btn btn-primary" onclick="navigateTo('add')">+ Add Expense</button>
+          <button class="btn btn-secondary" onclick="navigateTo('list')">View All Expenses</button>
+        </div>
+      </section>
+
+      <!-- Screen 2: Add Expense Form -->
+      <section id="screen-add" class="screen">
+        <form id="expenseForm" novalidate>
+          <div class="form-group">
+            <label for="title">Title *</label>
+            <input type="text" id="title" name="title" placeholder="e.g. Lunch" required>
+            <span class="error-msg" id="titleError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Amount ($) *</label>
+            <input type="number" id="amount" name="amount" placeholder="0.00" step="0.01" min="0.01" required>
+            <span class="error-msg" id="amountError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+              <option value="">-- Select --</option>
+              <option value="Food">Food</option>
+              <option value="Transport">Transport</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Bills">Bills</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg" id="categoryError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date *</label>
+            <input type="date" id="date" name="date" required>
+            <span class="error-msg" id="dateError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3" placeholder="Optional notes..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Save Expense</button>
+        </form>
+      </section>
+
+      <!-- Screen 3: Expense List -->
+      <section id="screen-list" class="screen">
+        <div id="expenseList">
+          <p class="empty-msg">No expenses yet. Add your first one!</p>
+        </div>
+      </section>
+
+      <!-- Screen 4: Expense Detail -->
+      <section id="screen-detail" class="screen">
+        <div id="expenseDetail"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
