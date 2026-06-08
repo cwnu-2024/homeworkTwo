@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Fix</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-live="polite">
+      <header class="topbar">
+        <button class="icon-button" id="backButton" type="button" aria-label="Go back">
+          <span aria-hidden="true">‹</span>
+        </button>
+        <div>
+          <p class="eyebrow">Campus Fix</p>
+          <h1 id="screenTitle">Service requests</h1>
+        </div>
+      </header>
+
+      <section class="screen active" id="homeScreen" data-title="Service requests">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">Quick campus help</p>
+            <h2>Report a dorm, classroom, or campus issue in one minute.</h2>
+          </div>
+          <button class="primary-button" type="button" data-go="form">New request</button>
+        </div>
+
+        <div class="status-strip">
+          <div>
+            <strong id="requestCount">0</strong>
+            <span>saved requests</span>
+          </div>
+          <div>
+            <strong>24h</strong>
+            <span>target response</span>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="section-heading">
+            <h3>Latest request</h3>
+            <button class="text-button" type="button" data-go="summary">View summary</button>
+          </div>
+          <div id="latestRequest" class="empty-state">
+            No request submitted yet.
+          </div>
+        </section>
+      </section>
+
+      <section class="screen" id="formScreen" data-title="New request">
+        <form id="requestForm" novalidate>
+          <label class="field">
+            <span>Student name</span>
+            <input id="studentName" name="studentName" type="text" autocomplete="name" placeholder="MD Niloy" />
+            <small class="error" id="studentNameError"></small>
+          </label>
+
+          <label class="field">
+            <span>Phone number</span>
+            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="01712345678" />
+            <small class="error" id="phoneError"></small>
+          </label>
+
+          <label class="field">
+            <span>Location</span>
+            <input id="location" name="location" type="text" placeholder="Dorm 3, room 402" />
+            <small class="error" id="locationError"></small>
+          </label>
+
+          <label class="field">
+            <span>Issue type</span>
+            <select id="issueType" name="issueType">
+              <option value="">Choose one</option>
+              <option>Electrical</option>
+              <option>Internet</option>
+              <option>Water</option>
+              <option>Cleaning</option>
+              <option>Furniture</option>
+            </select>
+            <small class="error" id="issueTypeError"></small>
+          </label>
+
+          <fieldset class="field">
+            <legend>Priority</legend>
+            <div class="segmented">
+              <label><input type="radio" name="priority" value="Low" /> Low</label>
+              <label><input type="radio" name="priority" value="Normal" checked /> Normal</label>
+              <label><input type="radio" name="priority" value="Urgent" /> Urgent</label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span>Needed by</span>
+            <input id="neededBy" name="neededBy" type="date" />
+            <small class="error" id="neededByError"></small>
+          </label>
+
+          <label class="field">
+            <span>Description</span>
+            <textarea id="description" name="description" rows="4" placeholder="Describe what is broken or needed."></textarea>
+            <small class="hint">Minimum 12 characters.</small>
+            <small class="error" id="descriptionError"></small>
+          </label>
+
+          <label class="check-row">
+            <input id="permission" name="permission" type="checkbox" />
+            <span>Staff may contact me about this request.</span>
+          </label>
+          <small class="error" id="permissionError"></small>
+
+          <button class="primary-button full" type="submit">Submit request</button>
+        </form>
+      </section>
+
+      <section class="screen" id="summaryScreen" data-title="Request summary">
+        <div id="summaryContent" class="summary-card empty-state">
+          Submit a request to see the summary here.
+        </div>
+        <div class="button-row">
+          <button class="secondary-button" type="button" data-go="form">Edit request</button>
+          <button class="primary-button" type="button" data-go="home">Done</button>
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button type="button" data-go="home">Home</button>
+        <button type="button" data-go="form">Create</button>
+        <button type="button" data-go="summary">Summary</button>
+      </nav>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
