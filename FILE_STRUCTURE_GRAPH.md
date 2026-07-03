@@ -7,6 +7,30 @@ homeworkTwo/
 |-- scripts/
 |   `-- update_file_structure_graph.py
 |-- submissions/
+|   |-- 301202424031149-wazed-md-abdul/
+|   |   |-- public/
+|   |   |   |-- favicon.svg
+|   |   |   `-- icons.svg
+|   |   |-- screenshots/
+|   |   |   |-- form.png
+|   |   |   |-- home.png
+|   |   |   `-- summary.png
+|   |   |-- src/
+|   |   |   |-- pages/
+|   |   |   |   |-- CreateHabitPage.jsx
+|   |   |   |   |-- HabitDetailPage.jsx
+|   |   |   |   `-- HomePage.jsx
+|   |   |   |-- App.jsx
+|   |   |   |-- index.css
+|   |   |   `-- main.jsx
+|   |   |-- .gitignore
+|   |   |-- .oxlintrc.json
+|   |   |-- AI_USAGE.md
+|   |   |-- index.html
+|   |   |-- package-lock.json
+|   |   |-- package.json
+|   |   |-- README.md
+|   |   `-- vite.config.js
 |   `-- .gitkeep
 |-- .gitignore
 |-- README.md
