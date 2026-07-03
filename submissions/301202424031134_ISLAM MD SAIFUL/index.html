@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campus FixIt</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-bar">
+        <div>
+          <p class="eyebrow">Campus services</p>
+          <h1>Campus FixIt</h1>
+        </div>
+        <span class="status-pill" id="requestCount">0 saved</span>
+      </header>
+
+      <main>
+        <section class="screen active" id="homeScreen" aria-labelledby="homeTitle">
+          <div class="hero-panel">
+            <p class="eyebrow">Student request tool</p>
+            <h2 id="homeTitle">Report a campus problem in one minute.</h2>
+            <p>
+              Send maintenance a clear request with the place, category, date,
+              and priority. Your latest request will be shown back to you as a
+              review summary.
+            </p>
+            <button class="primary-button" type="button" data-route="form">Start request</button>
+          </div>
+
+          <div class="quick-stats" aria-label="Application summary">
+            <div>
+              <strong id="openCount">0</strong>
+              <span>saved requests</span>
+            </div>
+            <div>
+              <strong>1</strong>
+              <span>screens</span>
+            </div>
+          </div>
+
+          <section class="info-section">
+            <h3>Recent activity</h3>
+            <div class="empty-state" id="homeRecent">
+              No requests yet. Create one to see it here.
+            </div>
+          </section>
+        </section>
+
+        <section class="screen" id="formScreen" aria-labelledby="formTitle">
+          <div class="screen-heading">
+            <button class="icon-button" type="button" data-route="home" aria-label="Go home">&lt;</button>
+            <div>
+              <p class="eyebrow">New request</p>
+              <h2 id="formTitle">Tell us what needs attention</h2>
+            </div>
+          </div>
+
+          <form id="requestForm" novalidate>
+            <label for="studentName">
+              Full name
+              <input id="studentName" name="studentName" type="text" autocomplete="name" placeholder="Avery Johnson">
+              <span class="error-message" data-error-for="studentName"></span>
+            </label>
+
+            <label for="email">
+              Student email
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="avery@university.edu">
+              <span class="error-message" data-error-for="email"></span>
+            </label>
+
+            <label for="area">
+              Campus area
+              <select id="area" name="area">
+                <option value="">Choose an area</option>
+                <option>Library</option>
+                <option>Science Building</option>
+                <option>Student Center</option>
+                <option>Residence Hall</option>
+                <option>Sports Complex</option>
+              </select>
+              <span class="error-message" data-error-for="area"></span>
+            </label>
+
+            <label for="category">
+              Problem category
+              <select id="category" name="category">
+                <option value="">Choose a category</option>
+                <option>Maintenance</option>
+                <option>Technology</option>
+                <option>Cleanliness</option>
+                <option>Safety</option>
+                <option>Accessibility</option>
+              </select>
+              <span class="error-message" data-error-for="category"></span>
+            </label>
+
+            <label for="dateNoticed">
+              Date noticed
+              <input id="dateNoticed" name="dateNoticed" type="date">
+              <span class="error-message" data-error-for="dateNoticed"></span>
+            </label>
+
+            <fieldset>
+              <legend>Priority</legend>
+              <div class="segmented-options">
+                <label>
+                  <input type="radio" name="priority" value="Normal">
+                  <span>Normal</span>
+                </label>
+                <label>
+                  <input type="radio" name="priority" value="Urgent">
+                  <span>Urgent</span>
+                </label>
+              </div>
+              <span class="error-message" data-error-for="priority"></span>
+            </fieldset>
+
+            <label for="description">
+              Description
+              <textarea id="description" name="description" rows="5" placeholder="Example: The projector in room 204 turns on but does not show the laptop screen."></textarea>
+              <span class="hint">At least 12 characters.</span>
+              <span class="error-message" data-error-for="description"></span>
+            </label>
+
+            <label class="checkbox-row" for="followUp">
+              <input id="followUp" name="followUp" type="checkbox">
+              <span>I would like an email follow-up.</span>
+            </label>
+
+            <button class="primary-button" type="submit">Submit request</button>
+          </form>
+        </section>
+
+        <section class="screen" id="summaryScreen" aria-labelledby="summaryTitle">
+          <div class="screen-heading">
+            <button class="icon-button" type="button" data-route="form" aria-label="Go back to form">&lt;</button>
+            <div>
+              <p class="eyebrow">Submitted</p>
+              <h2 id="summaryTitle">Request summary</h2>
+            </div>
+          </div>
+
+          <div class="success-card">
+            <strong>Request saved</strong>
+            <span id="summaryTimestamp">Your latest campus request is ready for review.</span>
+          </div>
+
+          <dl class="summary-list" id="summaryList"></dl>
+
+          <div class="button-row">
+            <button class="secondary-button" type="button" data-route="history">View history</button>
+            <button class="primary-button" type="button" data-route="form">New request</button>
+          </div>
+        </section>
+
+        <section class="screen" id="historyScreen" aria-labelledby="historyTitle">
+          <div class="screen-heading">
+            <button class="icon-button" type="button" data-route="home" aria-label="Go home">&lt;</button>
+            <div>
+              <p class="eyebrow">Saved locally</p>
+              <h2 id="historyTitle">Request history</h2>
+            </div>
+          </div>
+
+          <div class="history-list" id="historyList"></div>
+
+          <button class="danger-button" id="clearHistoryButton" type="button">Clear history</button>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button type="button" data-route="home" aria-current="page">
+          <span>H</span>
+          Home
+        </button>
+        <button type="button" data-route="form">
+          <span>+</span>
+          New
+        </button>
+        <button type="button" data-route="history">
+          <span>=</span>
+          History
+        </button>
+      </nav>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
