@@ -43,9 +43,4 @@ For review, use a mobile-sized browser window or phone emulator. The layout is r
 ## Submission Note
 
 The folder name uses placeholder student information because no student ID or English name was provided. Before submitting, rename:
-
-`submissions/00000000-student-name/`
-
-to:
-
-`submissions/<student-id>-<english-name>/`
+`submissions/301202424031134-ISLAM MD SAIFUL`
